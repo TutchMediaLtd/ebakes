@@ -1,0 +1,26 @@
+.page-header {
+  text-align: center;
+  padding: 50px 0 50px;
+  background-color: $spray;
+  color: $white;
+  background-repeat: no-repeat;
+  background-position: center bottom;
+  
+  p {
+    font-weight: normal;
+    font-size: 20px;
+    line-height: 1.8;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+.page-header__headline {
+  font-weight: normal;
+  text-align: center;
+  
+  &:last-child {
+    margin-bottom: 0;
+  }
+}

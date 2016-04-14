@@ -1,0 +1,67 @@
+{% extends "_layout" %}
+
+{% block page_header %}
+  <section class="page-header">
+   <div class="container">
+      <h1 class="page-header__headline"><strong>{{ entry.title }}</strong></h1>
+   </div>
+   </section>
+{% endblock %}
+
+
+{% block content %}
+
+  <div class="content">
+    <div class="container">
+
+      <aside class="recipe__sidebar">
+        <h3 class="recipe__ingrediants-heading">Ingrediants</h3>
+        <ul class="recipe__ingrediants">
+          {% for block in entry.ingrediants %}
+            {% if block.type == "ingrediant" %}
+            {% set category = block.ingrediant.first() %}
+            
+            {% switch block.measurement %}
+
+              {% case "tsp" or "tbsp" %}
+                {% set qty = block.amount ~ ' ' ~ block.measurement %}
+              {% case "none" %}
+                {% set qty = block.amount %}
+              {% default %}
+                {% set qty = block.amount ~ block.measurement %}
+            {% endswitch %}
+
+            {% if block.amount > 1 and block.measurement == "none" %}
+              {% set ingrediant = category|pluralize %}
+            {% else %}
+              {% set ingrediant = category %}
+            {% endif %}
+
+            {% set desc = (block.description != '') ? ', ' ~ block.description : '' %}
+
+            <li>{{ qty }} <a href="{{ category.url }}">{{ ingrediant }}</a>{{ desc }}</li>
+            {% endif %}
+          {% endfor %}
+        </ul>
+      </aside>
+      <section class="recipe__method">
+       <ul>
+        {% set counter = 1 %}
+       {% for block in entry.method %}
+       
+          {% set loopIndex = loop.index %}
+          {% switch block.type %}
+            {% case "instruction" %}
+             <li class="recipe__method__item"><span class="recipe__method-number">{{ counter }}.</span> {{ block.text }}</li>
+             {% set counter = counter + 1 %}
+            {% case "tip" %}
+              <li class="recipe__method__item--tip">{{ block.text }}</li>     
+            {% endswitch %}
+          
+        {% endfor %}
+         </ul>
+      </section>
+    </div>
+  </div>
+
+{% endblock %}

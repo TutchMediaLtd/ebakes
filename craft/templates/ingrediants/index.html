@@ -1,0 +1,15 @@
+{% extends "_layout" %}
+
+{% block content %}
+<div class="content">
+  <div class="container">
+    <ul>
+      {% nav category in craft.categories.group('ingrediants') %}
+          <li>
+              <a href="{{ category.url }}">{{ category.title }}</a>
+          </li>
+      {% endnav %}
+    </ul>
+  </div>
+</div>
+{% endblock %}

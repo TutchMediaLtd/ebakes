@@ -1,0 +1,27 @@
+{% extends "_layout" %}
+
+{% block page_header %}
+  <section class="page-header">
+   <div class="container">
+      <h1 class="page-header__headline"><strong>{{ category.title }}</strong></h1>
+   </div>
+   </section>
+{% endblock %}
+
+{% block content %}
+<div class="content">
+  <div class="container">
+    <h4>Recipes using {{ category.title }}</h4>
+
+    {% set entries = craft.entries.section('recipes').relatedTo({
+      element: category,
+      field: 'ingrediants.ingrediant'
+    }) %}
+        
+    
+    {% for entry in entries %}
+     <a href="{{ entry.url }}">{{entry.title}}</a>
+    {% endfor %}
+  </div>
+</div>
+{% endblock %}

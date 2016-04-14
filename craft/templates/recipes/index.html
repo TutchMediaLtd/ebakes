@@ -1,0 +1,24 @@
+{% extends "_layout" %}
+
+{% block page_header %}
+  <section class="page-header">
+   <div class="container">
+      <h1 class="page-header__headline"><strong>Recipes</strong></h1>
+   </div>
+   </section>
+{% endblock %}
+
+{% block content %}
+ <div class="content">
+   <div class="container">
+    <section class="recipe-listing">
+      {% for entry in craft.entries.section('recipes').find() %}
+        <article class="recipe-listing__item">
+          <h2 class="recipe-listing__title">{{ entry.title }}</h2>
+          <a href="{{ entry.url }}" class="recipe-listing__link"></a>
+        </article>
+      {% endfor %}
+    </section>
+  </div>
+ </div>
+{% endblock %}

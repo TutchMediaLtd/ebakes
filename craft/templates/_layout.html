@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <script src="https://use.typekit.net/syt5ncm.js"></script>
+    <script>try{Typekit.load({ async: true });}catch(e){}</script>
+    
+    <meta charset="utf-8" />
+    <title>{% if title is defined %}{{ title }} - {% endif %}{{ siteName }}</title>
+    <link rel="home" href="{{ siteUrl }}" />
+    {% includeCssFile "/assets/css/style.css" %}
+    {{ getHeadHtml() }}
+  </head>
+  <body>
+    <header class="site-header">
+      <div class="site-mast">
+        <a href="/" class="site-mast__logo"><img src="{{ siteSettings.logo.first.url }}" alt=""></a>
+        <nav class="site-nav">
+          <ul>
+           {{ craft.amNav.getNav("primaryNavigation") }}
+          </ul>
+        </nav>
+      </div>
+    </header>
+      {% block page_header %}
+      {% endblock %}
+      
+    <main class="content" role="main">
+      {% block content %}
+        <div class="container">
+          <p>No Content</p>
+        </div>
+      {% endblock %}
+    </main>
+
+    {{ getFootHtml() }}
+  </body>
+</html>
