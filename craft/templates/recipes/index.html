@@ -14,6 +14,7 @@
     <section class="recipe-listing">
       {% for entry in craft.entries.section('recipes').find() %}
         <article class="recipe-listing__item">
+          <img src="{{ entry.thumbnail.first().url }}" alt="">
           <h2 class="recipe-listing__title">{{ entry.title }}</h2>
           <a href="{{ entry.url }}" class="recipe-listing__link"></a>
         </article>
