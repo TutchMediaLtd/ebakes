@@ -5,7 +5,6 @@
 .recipe-listing__item {
   background: $white-lilac;
   border: solid 1px darken($white-lilac, 5%);
-  padding: 20px;
   width: 30%;
   float: left;
   margin-right: 3.3%;
@@ -16,6 +15,14 @@
   &:nth-child(3n) {
     margin-right: 0;
   }
+}
+
+.recipe-listing__thumb {
+  width: 100%;
+}
+
+.recipe-listing__content {
+  padding: 20px;
 }
 
 .recipe-listing__link {
